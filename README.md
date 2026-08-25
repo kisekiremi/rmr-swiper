@@ -1,2 +1,32 @@
-# rmrSwiper
-combined swiper for official website
+# rmr‑swiper
+
+> combined swiper for official website
+
+## install
+
+```bash
+npm i rmr-swiper swiper
+```
+
+## use
+
+```
+// -----normal case-----
+import { RmrSwiper } from 'rmr-swiper'
+import 'rmr-swiper/style.css'
+import 'swiper/css'
+
+// ---import if need
+// import 'swiper/css/pagination'
+// import 'swiper/css/navigation'
+// import 'swiper/css/effect-fade'
+// import 'swiper/css/parallax'
+
+// -------Another-------
+import RmrSwiper from 'rmr-swiper'
+import 'rmr-swiper/style.css'
+import 'swiper/css'
+
+const app = createApp(App)
+app.use(RmrSwiper)
+```

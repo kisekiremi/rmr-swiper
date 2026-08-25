@@ -1,0 +1,48 @@
+{
+  "name": "rmr-swiper",
+  "version": "1.0.0",
+  "author": "kisekiremi",
+  "description": "A vue3 swiper component for base official website",
+  "type": "module",
+  "main": "./dist/rmr-swiper.umd.js",
+  "module": "./dist/rmr-swiper.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/rmr-swiper.es.js",
+      "require": "./dist/rmr-swiper.umd.js"
+    },
+    "./style.css": "./dist/rmr-swiper.css"
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite --config vite.dev.config.ts --host"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.47",
+    "swiper": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@vitejs/plugin-vue": "^5.1.0",
+    "chalk": "^4.1.2",
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^4.5.0",
+    "typescript": "^5.4.0",
+    "vue": "^3.2.47",
+    "swiper": "^12.1.0",
+    "prettier": "^3.9.6"
+  },
+  "keywords": [
+    "rmr-swiper"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kisekiremi/rmr-swiper.git"
+  }
+}
