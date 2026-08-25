@@ -1,6 +1,6 @@
 {
   "name": "rmr-swiper",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "kisekiremi",
   "description": "A vue3 swiper component for base official website",
   "type": "module",
