@@ -1,6 +1,6 @@
 {
   "name": "rmr-swiper",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": "kisekiremi",
   "description": "A vue3 swiper component for base official website",
   "type": "module",
@@ -13,7 +13,7 @@
       "import": "./dist/rmr-swiper.es.js",
       "require": "./dist/rmr-swiper.umd.js"
     },
-    "./style.css": "./dist/rmr-swiper.css"
+    "./style.css": "./dist/style.css"
   },
   "scripts": {
     "build": "vite build",
