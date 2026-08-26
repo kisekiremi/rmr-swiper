@@ -108,9 +108,7 @@ const Emits = defineEmits<{
 
 // ---- State ----
 const swiperRef = ref<SwiperInstance | null>(null)
-const currentSwiperIndex = computed(() => {
-  return swiperRef.value?.activeIndex ?? 0
-})
+const currentSwiperIndex = ref(0)
 const isSliding = ref(false) // 防抖标志，防止连续触发 slidePrev
 const dragStartY = ref<number | null>(null)
 const dragPointerId = ref<number | null>(null)
@@ -324,6 +322,7 @@ const onSwiperInit = (swiper: SwiperInstance) => {
 }
 
 const onSwiperSlideChange = (swiper: SwiperInstance) => {
+  currentSwiperIndex.value = swiper.activeIndex
   // 每次切换后重新修正 Footer 高度（防止内容动态变化）
   updateFooterSlideHeight()
 
@@ -394,7 +393,6 @@ function getSwiper() {
 }
 
 defineExpose({
-  activeIndex: currentSwiperIndex,
   slideNext,
   slidePrev,
   slideTo,
