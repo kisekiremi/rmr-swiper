@@ -52,7 +52,6 @@
 
 <script setup lang="ts">
 /**
- * FullPageScroll 全屏滚动展示组件
  * 基于 Swiper 12，支持垂直/水平全屏滚动、视差效果、响应式设计
  */
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
@@ -366,6 +365,23 @@ const handleMouseWheel = (e: WheelEvent) => {
     e.preventDefault()
   }
 }
+
+// ---- 常用方法 ----
+
+function slideNext() {
+  swiperRef.value?.slideNext()
+}
+function slidePrev() {
+  swiperRef.value?.slidePrev()
+}
+function slideTo(index: number) {
+  swiperRef.value?.slideTo(index)
+}
+function getSwiper() {
+  return swiperRef.value
+}
+
+defineExpose({ slideNext, slidePrev, slideTo, getSwiper })
 
 // ---- 生命周期 ----
 
