@@ -19,6 +19,7 @@
     :pagination="getPaginationConfig()"
     @swiper="onSwiperInit"
     @slide-change="onSwiperSlideChange"
+    @transition-end="onSwiperTransitionEnd"
   >
     <!-- 普通全屏 slide -->
     <SwiperSlide
@@ -54,7 +55,7 @@
 /**
  * 基于 Swiper 12，支持垂直/水平全屏滚动、视差效果、响应式设计
  */
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import type { Swiper as SwiperInstance } from 'swiper'
 import { Mousewheel, Pagination, Parallax, EffectFade } from 'swiper/modules'
@@ -100,10 +101,16 @@ const props = withDefaults(defineProps<Props>(), {
   fullPage: true,
   pagination: false
 })
+const Emits = defineEmits<{
+  slideChange: [swiper: SwiperInstance]
+  transitionEnd: [swiper: SwiperInstance]
+}>()
 
 // ---- State ----
 const swiperRef = ref<SwiperInstance | null>(null)
-const currentSwiperIndex = ref(0)
+const currentSwiperIndex = computed(() => {
+  return swiperRef.value?.activeIndex ?? 0
+})
 const isSliding = ref(false) // 防抖标志，防止连续触发 slidePrev
 const dragStartY = ref<number | null>(null)
 const dragPointerId = ref<number | null>(null)
@@ -317,7 +324,6 @@ const onSwiperInit = (swiper: SwiperInstance) => {
 }
 
 const onSwiperSlideChange = (swiper: SwiperInstance) => {
-  currentSwiperIndex.value = swiper.activeIndex
   // 每次切换后重新修正 Footer 高度（防止内容动态变化）
   updateFooterSlideHeight()
 
@@ -334,6 +340,12 @@ const onSwiperSlideChange = (swiper: SwiperInstance) => {
     !swiper.mousewheel?.enabled && swiper.mousewheel?.enable()
     swiper.allowTouchMove = isAndroid || isIOS ? true : false
   }
+
+  Emits('slideChange', swiper)
+}
+
+function onSwiperTransitionEnd(swiper: SwiperInstance) {
+  Emits('transitionEnd', swiper)
 }
 
 /**
@@ -381,7 +393,13 @@ function getSwiper() {
   return swiperRef.value
 }
 
-defineExpose({ slideNext, slidePrev, slideTo, getSwiper })
+defineExpose({
+  activeIndex: currentSwiperIndex,
+  slideNext,
+  slidePrev,
+  slideTo,
+  getSwiper
+})
 
 // ---- 生命周期 ----
 
