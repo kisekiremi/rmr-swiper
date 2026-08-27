@@ -14,6 +14,7 @@
     :effect="
       props.effect === 'slide' ? 'slide' : props.effect === 'fade' ? 'fade' : undefined
     "
+    :fade-effect="{ crossFade: props.effect === 'fade' }"
     :parallax="props.effect === 'parallax'"
     :modules="getModules()"
     :pagination="getPaginationConfig()"
