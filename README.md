@@ -1,5 +1,7 @@
 # rmr‑swiper
 
+[![NPM Downloads](https://img.shields.io/npm/dm/rmr-swiper.svg)](https://www.npmjs.com/package/rmr-swiper)
+
 > combined swiper for official website, with vue3 support.
 
 ## install
