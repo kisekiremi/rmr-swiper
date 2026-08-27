@@ -33,4 +33,4 @@ app.use(RmrSwiper)
 
 ## hint
 
-> effect=fade下不支持存在Footer（可做隱藏式fixed Footer替代）
+> effect=fade下不支持存在Footer（可替代為隱藏式fixed Footer）
