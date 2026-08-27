@@ -1,6 +1,6 @@
 # rmr‑swiper
 
-> combined swiper for official website
+> combined swiper for official website, with vue3 support.
 
 ## install
 
@@ -30,3 +30,7 @@ import 'swiper/css'
 const app = createApp(App)
 app.use(RmrSwiper)
 ```
+
+## hint
+
+> effect=fade下不支持存在Footer（可做隱藏式fixed Footer替代）
