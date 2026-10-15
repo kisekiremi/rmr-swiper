@@ -214,7 +214,6 @@ const attachDragListenersToSwiper = (swiper: SwiperInstance) => {
 
   const el = swiper.el as HTMLElement | undefined
   if (!el) return
-
   if (detachDragListeners) detachDragListeners()
 
   const threshold = 30
@@ -346,7 +345,7 @@ function onSwiperTransitionEnd(swiper: SwiperInstance) {
 /**
  * 全局滚轮事件处理（只处理最后一屏）
  *
- * 在最后一屏时 Swiper 的 mousewheel 已被禁用，由此函数接管：
+ * 在最后一屏时 Swiper 的 mousewheel 已被禁用，由此函数处理：
  * - 向上滚动：修正 snapGrid → slidePrev() → 防抖
  * - 向下滚动：preventDefault 阻止浏览器继续滚动
  */
