@@ -130,7 +130,6 @@ const getPaginationConfig = () => {
 }
 
 // ---- 核心逻辑 ----
-
 /**
  * 修正 Footer slide 的渲染高度
  * 将 Footer slide 的高度设为实际内容高度，并修正 Swiper 的 translate
@@ -168,10 +167,7 @@ const updateFooterSlideHeight = async () => {
 /**
  * 修正 Swiper 内部 snapGrid 和 slidesGrid
  *
- * 问题根因：setTranslate 修改了实际渲染位置，但 snapGrid/slidesGrid 没有同步，
- * 导致 slidePrev() 用 snapGrid 反查当前位置时找不到匹配项，fallback 到 index 0。
- *
- * 解决：在调用 slidePrev() 之前，重建正确的 snapGrid 和 slidesGrid。
+ * 调用 slidePrev() 之前，重建正确的 snapGrid 和 slidesGrid。
  * - 前 N-1 个 slide：每个占 viewportHeight
  * - 最后一个 Footer slide：占实际内容高度
  */
@@ -203,7 +199,6 @@ const fixSwiperSnapGrid = (swiper: SwiperInstance) => {
 }
 
 // ---- 事件处理 ----
-
 const slidePrevFromFooter = (swiper: SwiperInstance) => {
   if (isSliding.value) return
   isSliding.value = true
@@ -379,7 +374,6 @@ const handleMouseWheel = (e: WheelEvent) => {
 }
 
 // ---- 常用方法 ----
-
 function slideNext() {
   swiperRef.value?.slideNext()
 }
@@ -401,7 +395,6 @@ defineExpose({
 })
 
 // ---- 生命周期 ----
-
 onMounted(() => {
   if (typeof window === 'undefined') return
   document.addEventListener('wheel', handleMouseWheel, { passive: false })
