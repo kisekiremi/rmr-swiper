@@ -35,4 +35,4 @@ app.use(RmrSwiper)
 
 ## hint
 
-> effect=fade下不支持存在Footer （可替代為隱藏式fixed Footer）
+> cannot use <template #Footer> under 'effect=fade'
